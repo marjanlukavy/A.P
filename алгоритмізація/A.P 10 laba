@@ -1,0 +1,135 @@
+#include<iostream>
+#include <fstream>
+using namespace std;
+struct node{
+    node *prev;
+    int data;
+    node *next;
+};
+struct node *start=NULL;
+
+node* create_node(){
+    node *n = new node;
+    cout<<"Please enter the Data"<<endl;
+    cin>>n->data;
+    n->next = NULL;
+    n->prev = NULL;
+    return n;
+}
+
+void insert_node(){
+    node *temp;
+    temp = create_node();
+    if(start == NULL){
+        start = temp;
+    }
+    else{
+        node *traverse;
+        traverse = start;
+        while(traverse->next != NULL){
+            traverse = traverse->next;
+        }
+        traverse->next=temp;
+        temp->prev=traverse;
+    }
+
+}
+
+void add_after(){
+    node *temp;
+    temp= create_node();
+    int value;
+    cout<<"Enter the value after which the data has to be inserted :"<<endl;
+    cin>>value;
+    node *traverse;
+    traverse = start;
+    while(traverse->data!=value){
+        traverse = traverse->next;
+    }
+    temp->prev = traverse;
+    temp->next=traverse->next;
+    traverse->next->prev = temp;
+    traverse->next = temp;
+
+}
+void display(){
+    node *traverse;
+    traverse  = start;
+    if(traverse == NULL) {
+        cout << "Список є порожнім" << endl;
+    } else {
+        cout<< "Дані: ";
+        while(traverse!=NULL){
+            cout<<traverse->data<<" ";
+            traverse = traverse->next;
+        }
+    }
+
+}
+
+void to_file(){
+    node *traverse;
+    traverse  = start;
+
+    ofstream MyFile("filename.txt");
+    while(traverse!=NULL){
+        MyFile << traverse->data;
+
+//        cout<<traverse->data<<" ";
+
+        traverse = traverse->next;
+    }
+    MyFile.close();
+}
+
+void delete_after(){
+    int n;
+    cin >> n;
+    struct node* temp = start;
+    if (n == 1) {
+        start = temp->next;
+        free(temp);
+    }
+    int i;
+    for (i = 0; i<n-2; i++) {
+        temp = temp->next;
+    }
+
+    struct node* temp1 = temp->next;
+    temp->next = temp1->next;
+    free(temp1);
+    display();
+}
+
+int main(){
+    int option;
+    cout<<"\nEnter 0 If You want to exit"<<endl;
+    cout<<"---------------------------------"<<endl;
+    cout<<"1 Add Node"<<endl;
+    cout<<"3 Add Node After a given Node"<<endl;
+    cout<<"6 Delete given node"<<endl;
+    cout<<"7 Display"<<endl;
+    cout<<"8 To file"<<endl;
+    do{
+
+        cout << endl;
+        cout << "Enter: ";
+
+        cin>>option;
+        switch(option){
+            case 1:insert_node();
+                break;
+//            case 2: insert_end();
+//                break;
+            case 3: add_after();
+                break;
+            case 6: delete_after();
+                break;
+            case 7: display();
+                break;
+            case 8: to_file();
+                break;
+        }
+
+    }while(option != 0);
+    return 0;}
