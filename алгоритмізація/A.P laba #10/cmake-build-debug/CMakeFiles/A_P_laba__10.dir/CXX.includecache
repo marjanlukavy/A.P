@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/marjanlukavyi/Desktop/ікні/алгоритмізація/A.P laba #10/main.cpp
+iostream
+-
+fstream
+-
+string
+-
+

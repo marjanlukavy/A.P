@@ -1,0 +1,3 @@
+/Users/marjanlukavyi/Desktop/ікні/алгоритмізація/A.P laba #10/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/marjanlukavyi/Desktop/ікні/алгоритмізація/A.P laba #10/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/marjanlukavyi/Desktop/ікні/алгоритмізація/A.P laba #10/cmake-build-debug/CMakeFiles/A_P_laba__10.dir
